@@ -15,7 +15,7 @@ def _log(s: str) -> object:
         _LOGGER.debug(i)
 
 
-_jgRegId = '1507bfd3f6ce767df06'
+_jgRegId = '191e35f7e14d78078b4'
 _token = ''
 _hass = None
 
@@ -27,19 +27,18 @@ def set_hass(hass):
 
 def _gen_headers():
     return {
-        'host': '1app.hicloud.hisensehitachi.com',
-        'accept-charset': 'UTF-8',
-        'authorization': (f'Bearer {_token}').strip(),
-        'x-his-locale': 'zh_CN',
-        'x-his-apikey': '1QiLCJhbGciOiJIUzI1NiJ9',
-        'x-his-timestamp': f'{int(time.time()*1000)}',
-        'x-his-appid': 'com.hisensehitachi.iez2',
-        'x-his-os': 'Android',
-        'x-his-version': '7.2.0.240618_release',
-        'content-type': 'application/json',
-        'x-his-apptag': 'V3',
-        'user-agent': 'Dalvik/2.1.0 (Linux; U; Android 12; V2304A Build/W528JS)',
+        'user-agent': 'Dart/3.3 (dart:io)',
         'accept-encoding': 'gzip',
+        'x-his-appid': 'com.hisensehitachi.iez2',
+        'x-his-apikey': '1QiLCJhbGciOiJIUzI1NiJ9',
+        'x-his-version': '7.3.1.241219_release',
+        'authorization': (f'Bearer {_token}').strip(),
+        'content-type': 'application/json',
+        'x-his-os': 'IOS',
+        'x-his-locale': 'zh_CN',
+        'x-his-apptag': 'V3',
+        'x-his-timestamp': f'{int(time.time()*1000)}',
+        'host': '1app.hicloud.hisensehitachi.com',
     }
 
 _domain = 'https://1app.hicloud.hisensehitachi.com/'
@@ -79,7 +78,7 @@ async def rt_login(username, refresh_token):
         'loginType': '0',
         'phoneNo': username,
         'refreshToken': refresh_token,
-        'version': 2
+        'version': 1
     })
 
 def parse_auth_res(res):
