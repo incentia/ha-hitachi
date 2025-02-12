@@ -1,9 +1,9 @@
 {
   "domain": "hitachi",
   "name": "HitachiCliamate",
-  "documentation": "https://github.com/mypal/ha-hitachi",
+  "documentation": "https://github.com/incentia/ha-hitachi",
   "dependencies": [],
-  "codeowners": ["@mypal"],
+  "codeowners": ["@incentia"],
   "requirements": [],
   "version": "0.0.2",
   "config_flow": true
