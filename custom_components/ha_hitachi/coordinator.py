@@ -16,8 +16,8 @@ from homeassistant.exceptions import ConfigEntryAuthFailed
 from .const import (
     DOMAIN, CONF_REFRESH_TOKEN, KEY_CODE, KEY_NAME, KEY_HEAT_MAX, KEY_HEAT_MIN, 
     KEY_COLD_MAX, KEY_COLD_MIN, KEY_MAC, KEY_HOME_ID, KEY_STATE, KEY_TARGET_TEMP, 
-    KEY_MODE, KEY_ECO, KEY_SILENT, KEY_DRY_FLOOR, KEY_LOCK, KEY_OUTLET_TEMP, 
-    KEY_INLET_TEMP, KEY_CUR_TEMP, KEY_TS, KEY_XKQ_TYPE, KEY_DEVICE_TYPE, KEY_KEY_TONE,
+    KEY_MODE, KEY_LOCK,  
+    KEY_CUR_TEMP, KEY_TS, KEY_XKQ_TYPE, KEY_DEVICE_TYPE, KEY_KEY_TONE,
     KEY_LED_BRIGHT, KEY_SCREEN_BRIGHT
 )
 from .request import refresh_auth, req_homes, req_status, req_cmd, set_hass
