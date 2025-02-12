@@ -21,15 +21,15 @@ KEY_TARGET_TEMP = 'xkq19Temp'
 KEY_HUMI = 'xkq20Humi'
 KEY_MODE = 'xkq21Mode'
 KEY_WIND = 'xkq23Wind'
-KEY_ECO = 'xkqSxc24Af'
-KEY_SILENT = 'xkqSxc25Af'
-KEY_DRY_FLOOR = 'xkqSxc28Af'
+#KEY_ECO = 'xkqSxc24Af'
+#KEY_SILENT = 'xkqSxc25Af'
+#KEY_DRY_FLOOR = 'xkqSxc28Af'
 KEY_LOCK = 'xkq44KeyLock'
 KEY_KEY_TONE = 'xkq50KeyTone'
 KEY_SCREEN_BRIGHT = 'xkq47ScreenBright'
 KEY_LED_BRIGHT = 'xkq45RunLedBright'
-KEY_OUTLET_TEMP = 'xkqSxc56Two'
-KEY_INLET_TEMP = 'xkqSxc57Twi'
+#KEY_OUTLET_TEMP = 'xkqSxc56Two'
+#KEY_INLET_TEMP = 'xkqSxc57Twi'
 KEY_CUR_TEMP = 'xkq70IndoorTemp'
 KEY_TS = 'timestamp'
 KEY_DEVICE_TYPE = 'deviceType'
@@ -42,15 +42,15 @@ class ModeEnum(IntEnum):
 
 class SensorEnum(StrEnum):
     target = KEY_TARGET_TEMP
-    outlet = KEY_OUTLET_TEMP
-    inlet = KEY_INLET_TEMP
+    #outlet = KEY_OUTLET_TEMP
+    #inlet = KEY_INLET_TEMP
     current = KEY_CUR_TEMP
 
 class SwitchEnum(StrEnum):
     switch = KEY_STATE
-    eco = KEY_ECO
-    silent = KEY_SILENT
-    dryfloor = KEY_DRY_FLOOR
+    #eco = KEY_ECO
+    #silent = KEY_SILENT
+    #dryfloor = KEY_DRY_FLOOR
     lock = KEY_LOCK
     # keytone = KEY_KEY_TONE
     # led = KEY_LED_BRIGHT
