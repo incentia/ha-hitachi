@@ -34,6 +34,14 @@ KEY_CUR_TEMP = 'xkq70IndoorTemp'
 KEY_TS = 'timestamp'
 KEY_DEVICE_TYPE = 'deviceType'
 KEY_XKQ_TYPE = 'xkqType'
+KEY_IEZCODE = 'iezCode'
+KEY_IU_DEVICE_TYPE = 'iu_deviceType'
+KEY_VERSION_MBP = 'versionModbusProtocol'
+KEY_SYSTEMNO = 'systemNo'
+KEY_IUNO = 'iuNo'
+KEY_IUTYPE = 'iuType'
+KEY_IUSN = 'iuSn'
+
 
 class ModeEnum(IntEnum):
     COLD = 0
