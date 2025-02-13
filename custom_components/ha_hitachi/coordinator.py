@@ -16,10 +16,11 @@ from homeassistant.exceptions import ConfigEntryAuthFailed
 from .const import (
     DOMAIN, CONF_REFRESH_TOKEN, KEY_CODE, KEY_NAME, KEY_HEAT_MAX, KEY_HEAT_MIN, 
     KEY_COLD_MAX, KEY_COLD_MIN, KEY_MAC, KEY_HOME_ID, KEY_STATE, KEY_TARGET_TEMP, 
-    KEY_MODE, KEY_LOCK,  
+    KEY_MODE, KEY_LOCK, KEY_HUMI, KEY_WIND 
     KEY_CUR_TEMP, KEY_TS, KEY_XKQ_TYPE, KEY_DEVICE_TYPE, KEY_KEY_TONE,
     KEY_LED_BRIGHT, KEY_SCREEN_BRIGHT,
-    KEY_IEZCODE, KEY_VERSION_MBP, KEY_SYSTEMNO, KEY_IUNO, KEY_IUTYPE, KEY_IUSN, KEY_IUID
+    KEY_IEZCODE, KEY_VERSION_MBP, KEY_SYSTEMNO, KEY_IUNO, KEY_IUTYPE, KEY_IUSN, KEY_IUID,
+    KEY_IU_STATE, KEY_IU_TARGET_TEMP, KEY_IU_MODE, KEY_IU_WIND, KEY_IU_HUMI, KEY_IU_CUR_TEMP
 )
 from .request import refresh_auth, req_homes, req_status, req_cmd, set_hass
 
@@ -146,6 +147,17 @@ class Coordinator(DataUpdateCoordinator[dict]):
                         xkq[KEY_KEY_TONE] = status[KEY_KEY_TONE]
                         xkq[KEY_LED_BRIGHT] = status[KEY_LED_BRIGHT]
                         xkq[KEY_SCREEN_BRIGHT] = status[KEY_SCREEN_BRIGHT]
+                        xkq[KEY_IU_WIND] = status[KEY_IU_WIND]
+                        xkq[KEY_IU_HUMI] = status[KEY_IU_HUMI]
+                    iu_status = res['data']['statusList']
+                    for iu in iu_devices:
+                        status = [item for item in iu_status if item.get(KEY_IUNO) == iu[KEY_IUNO]][0]
+                        iu[KEY_IU_STATE] = status[KEY_IU_STATE]
+                        iu[KEY_IU_TARGET_TEMP] = status[KEY_IU_TARGET_TEMP]
+                        iu[KEY_IU_MODE] = status[KEY_IU_MODE]
+                        iu[KEY_IU_WIND] = status[KEY_IU_WIND]
+                        iu[KEY_IU_HUMI] = status[KEY_IU_HUMI]
+                        iu[KEY_IU_CUR_TEMP] = status[KEY_IU_CUR_TEMP]
                 _LOGGER.debug(self._devices)
                 return self._devices
         except Exception as err:
