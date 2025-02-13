@@ -18,7 +18,8 @@ from .const import (
     KEY_COLD_MAX, KEY_COLD_MIN, KEY_MAC, KEY_HOME_ID, KEY_STATE, KEY_TARGET_TEMP, 
     KEY_MODE, KEY_LOCK,  
     KEY_CUR_TEMP, KEY_TS, KEY_XKQ_TYPE, KEY_DEVICE_TYPE, KEY_KEY_TONE,
-    KEY_LED_BRIGHT, KEY_SCREEN_BRIGHT
+    KEY_LED_BRIGHT, KEY_SCREEN_BRIGHT,
+    KEY_IEZCODE, KEY_VERSION_MBP, KEY_SYSTEMNO, KEY_IUNO, KEY_IUTYPE, KEY_IUSN
 )
 from .request import refresh_auth, req_homes, req_status, req_cmd, set_hass
 
@@ -86,6 +87,19 @@ class Coordinator(DataUpdateCoordinator[dict]):
                     KEY_DEVICE_TYPE: xkq['type'],
                     KEY_XKQ_TYPE: xkq[KEY_XKQ_TYPE],
                 } for xkq in home_data['data']['homeDetail']['xkqList']],
+                'iuList': [{
+                    KEY_TS: 0,
+                    KEY_IEZCODE:  iu[KEY_IEZCODE],
+                    KEY_SYSTEMNO: iu[KEY_SYSTEMNO],
+                    KEY_IUNO: iu[KEY_IUNO],
+                    KEY_IUTYPE: iu[KEY_IUTYPE],
+                    KEY_IUSN: iu[KEY_IUSN],
+                    KEY_HEAT_MAX: iu[KEY_HEAT_MAX],
+                    KEY_HEAT_MIN: iu[KEY_HEAT_MIN],
+                    KEY_COLD_MAX: iu[KEY_COLD_MAX],
+                    KEY_COLD_MIN: iu[KEY_COLD_MIN],
+                    KEY_HOME_ID: home_id,
+                } for iu in home_data['data']['homeDetail']['deviceList']['iuList']],
             }
         _LOGGER.debug('devices:')
         _LOGGER.debug(self._devices)
