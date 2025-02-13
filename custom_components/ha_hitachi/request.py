@@ -5,7 +5,7 @@ import asyncio
 from functools import partial
 from .const import (
     CodeEnum, KEY_CODE, KEY_DEVICE_TYPE, KEY_XKQ_TYPE, KEY_HOME_ID, 
-    KEY_IEZCODE, KEY_IU_DEVICE_TYPE, KEY_VERSION_MBP, KEY_SYSTEMNO, KEY_IUNO, KEY_IUTYPE, KEY_IUSN
+    KEY_IEZCODE, KEY_SYSTEMNO, KEY_IUNO, KEY_IUTYPE, KEY_IUSN
 )
 from homeassistant.helpers.httpx_client import get_async_client
 
@@ -164,8 +164,8 @@ async def req_cmd_iu(device_info, cmd_dict):
         "positionCity": "",
         "ctrlList": [
              {"iezCode": device_info[KEY_IEZCODE],
-              "deviceType": device_info[KEY_IU_DEVICE_TYPE],
-              "versionModbusProtocol": device_info[KEY_VERSION_MBP],
+              "deviceType": "3",
+              "versionModbusProtocol": 11,
               "iuCtrlInfo":[
                   {
                       "systemNo": device_info[KEY_SYSTEMNO],
