@@ -114,17 +114,20 @@ async def req_homes(home_id):
     url = f'api/apphome/homes/{home_id}'
     return await _get(url)
 
-async def req_status(home_id, xkq_list):
+async def req_status(home_id,iezcode, xkq_list, iu_list):
     url = f'api/appstatus/homes/{home_id}/status'
-    return await _post(url, {
-        'boxList': [],
-        'deviceListGjy': [],
-        'iuIdList': [],
-        'iuIdListGjy': [],
-        'noNetTip': True,
-        'xkqListGjy': [],
+    return await _post(url, {        
         'homeId': int(home_id),
+        "noNetTip": null,
+        'iuIdList': [
+            "iezCode": iezcode,
+            "iuIds" : iu_list,
+        ],        
+        'boxList': [],
         'xkqList': xkq_list,
+        'iuIdListGjy': [],
+        'xkqListGjy': [],
+        'deviceListGjy': [],
     })
 
 async def req_cmd(device_info, cmd_dict):
