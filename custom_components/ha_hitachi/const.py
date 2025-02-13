@@ -39,6 +39,7 @@ KEY_SYSTEMNO = 'systemNo'
 KEY_IUNO = 'iuNo'
 KEY_IUTYPE = 'iuType'
 KEY_IUSN = 'iuSn'
+KEY_IUID = 'iuId'
 
 
 class ModeEnum(IntEnum):
