@@ -73,7 +73,7 @@ class Coordinator(DataUpdateCoordinator[dict]):
         for home in res['data']['homeList']:
             home_id = home[KEY_HOME_ID]
             home_data = await req_homes(home[KEY_HOME_ID])
-            self._devices[home_id] = {
+            self._devices[home_id] = {    
                 'xkqList': [{
                     KEY_TS: 0,
                     KEY_CODE: xkq[KEY_CODE],
@@ -89,7 +89,6 @@ class Coordinator(DataUpdateCoordinator[dict]):
                 } for xkq in home_data['data']['homeDetail']['xkqList']],
                 'iuList': [{
                     KEY_TS: 0,
-                    KEY_IEZCODE:  iu[KEY_IEZCODE],
                     KEY_SYSTEMNO: iu[KEY_SYSTEMNO],
                     KEY_IUNO: iu[KEY_IUNO],
                     KEY_IUTYPE: iu[KEY_IUTYPE],
@@ -101,6 +100,7 @@ class Coordinator(DataUpdateCoordinator[dict]):
                     KEY_IUID: iu[KEY_IUID],
                     KEY_HOME_ID: home_id,
                 } for iu in home_data['data']['homeDetail']['deviceList']['iuList']],
+                KEY_IEZCODE: home_data['data']['homeDetail']['deviceList'][KEY_IEZCODE],
             }
         _LOGGER.debug('devices:')
         _LOGGER.debug(self._devices)
