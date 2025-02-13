@@ -3,7 +3,7 @@ import time
 import logging
 import asyncio
 from functools import partial
-from .const import CodeEnum, KEY_CODE, KEY_DEVICE_TYPE, KEY_XKQ_TYPE, KEY_HOME_ID
+from .const import CodeEnum, KEY_CODE, KEY_DEVICE_TYPE, KEY_XKQ_TYPE, KEY_HOME_ID, KEY_IEZCODE, KEY_IU_DEVICE_TYPE, KEY_VERSION_MBP, KEY_SYSTEMNO, KEY_IUNO, KEY_IUTYPE, KEY_IUSN
 from homeassistant.helpers.httpx_client import get_async_client
 
 _LOGGER = logging.getLogger(__name__)
@@ -142,6 +142,40 @@ async def req_cmd(device_info, cmd_dict):
                 "xkqType": device_info[KEY_XKQ_TYPE],
             }
         ],
+        "homeId": device_info[KEY_HOME_ID],
+        "ctrlType": "HA420",
+    }
+    _LOGGER.debug(payload)
+    res = await _post(url, payload)
+    await asyncio.sleep(3)
+    return res
+
+async def req_cmd_iu(device_info, cmd_dict):
+    url = 'api/appcontrol/cmds/multiIuOuCtrl'
+    payload = {
+        "regionCode": "000000",
+        "positionLng": 0,
+        "positionLat": 0,
+        "position1": "",
+        "position2": "",
+        "positionCity": "",
+        "ctrlList": [
+             {"iezCode": device_info[KEY_IEZCODE],
+              "deviceType": device_info[KEY_IU_DEVICE_TYPE],
+              "versionModbusProtocol": device_info[KEY_VERSION_MBP],
+              "iuCtrlInfo":[
+                  {
+                      "systemNo": device_info[KEY_SYSTEMNO],
+                       "iuNo": device_info[KEY_IUNO],
+                       "iuType": device_info[KEY_IUTYPE],
+                       "iuSn": device_info[KEY_IUSN],
+                       "ctrlJson": cmd_dict,
+                  }
+                ],
+                "ouCtrlInfo":[]
+             }            
+        ],
+        "xkqCtrlList": [],
         "homeId": device_info[KEY_HOME_ID],
         "ctrlType": "HA420",
     }
