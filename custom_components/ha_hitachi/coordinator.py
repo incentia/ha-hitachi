@@ -132,8 +132,9 @@ class Coordinator(DataUpdateCoordinator[dict]):
                     iu_list = [{
                         KEY_TS: 0, # xkq[KEY_TS]
                         KEY_IUID: iu[KEY_IUID]
-                    } for iu in iu_devices]                    
-                    res = await req_status(home_id, xkq_list, iu_list)
+                    } for iu in iu_devices]
+                    iezcode = devices[home_id][KEY_IEZCODE]
+                    res = await req_status(home_id,iezcode, xkq_list, iu_list)
                     xkq_status = res['data']['xkqStatusList']
                     for xkq in xkq_devices:
                         status = [item for item in xkq_status if item.get(KEY_CODE) == xkq[KEY_CODE]][0]
