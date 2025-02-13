@@ -40,6 +40,14 @@ KEY_IUNO = 'iuNo'
 KEY_IUTYPE = 'iuType'
 KEY_IUSN = 'iuSn'
 KEY_IUID = 'iuId'
+KEY_IU_STATE = 'iu28Onoff'
+KEY_IU_TARGET_TEMP = 'iu31Temp'
+KEY_IU_MODE = 'iu29Mode'
+KEY_IU_WIND = 'iu30Wind'
+KEY_IU_HUMI = 'iu32Humi'
+KEY_IU_CUR_TEMP = 'iu39Ti'
+
+
 
 
 class ModeEnum(IntEnum):
