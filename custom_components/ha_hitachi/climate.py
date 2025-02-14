@@ -35,8 +35,12 @@ def _get_mode(state: int, mode: int | None = None) -> HVACMode:
         return HVACMode.COOL
     if mode == ModeEnum.HEAT.value:
         return HVACMode.HEAT
-    if mode == ModeEnum.FLOOR_HEAT.value:
+    if mode == ModeEnum.DRY.value:
         return HVACMode.DRY
+    if mode == ModeEnum.FAN_ONLY.value:
+        return HVACMode.FAN_ONLY
+    if mode == ModeEnum.AUTO.value:
+        return HVACMode.AUTO
 
 def _gen_payload(mode: HVACMode) -> dict:
     if mode == HVACMode.OFF:
