@@ -47,6 +47,7 @@ KEY_IU_WIND = 'iu30Wind'
 KEY_IU_HUMI = 'iu32Humi'
 KEY_IU_CUR_TEMP = 'iu39Ti'
 KEY_IU_MATCHFLG = 'matchFlg'
+KEY_MATCHIUID = 'matchIuId'
 
 
 
