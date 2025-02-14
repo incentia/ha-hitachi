@@ -60,7 +60,17 @@ def _gen_payload(mode: HVACMode) -> dict:
     if mode == HVACMode.DRY:
         return {
             KEY_STATE: 1,
-            KEY_MODE: ModeEnum.FLOOR_HEAT.value
+            KEY_MODE: ModeEnum.DRY.value
+        }
+    if mode == HVACMode.FAN_ONLY:
+        return {
+            KEY_STATE: 1,
+            KEY_MODE: ModeEnum.FAN_ONLY.value
+        }
+    if mode == HVACMode.AUTO:
+        return {
+            KEY_STATE: 1,
+            KEY_MODE: ModeEnum.AUTO.value
         }
 
 async def async_setup_entry(
