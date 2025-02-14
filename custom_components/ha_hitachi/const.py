@@ -54,6 +54,10 @@ class ModeEnum(IntEnum):
     COLD = 0
     HEAT = 1
     FLOOR_HEAT = 2
+    DRY = 3
+    FAN_ONLY = 5
+    AUTO = 6
+    OFF  = 7
 
 class SensorEnum(StrEnum):
     target = KEY_TARGET_TEMP
