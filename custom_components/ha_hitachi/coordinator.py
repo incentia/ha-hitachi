@@ -21,7 +21,7 @@ from .const import (
     KEY_LED_BRIGHT, KEY_SCREEN_BRIGHT,
     KEY_IEZCODE, KEY_VERSION_MBP, KEY_SYSTEMNO, KEY_IUNO, KEY_IUTYPE, KEY_IUSN, KEY_IUID,
     KEY_IU_STATE, KEY_IU_TARGET_TEMP, KEY_IU_MODE, KEY_IU_WIND, KEY_IU_HUMI, KEY_IU_CUR_TEMP,
-    KEY_IU_MATCHFLG 
+    KEY_IU_MATCHFLG, KEY_MATCHIUID 
 )
 from .request import refresh_auth, req_homes, req_status, req_cmd, set_hass
 
@@ -102,6 +102,7 @@ class Coordinator(DataUpdateCoordinator[dict]):
                     KEY_IUID: iu[KEY_IUID],
                     KEY_HOME_ID: home_id,
                     KEY_IU_MATCHFLG: iu[KEY_IU_MATCHFLG],
+                    KEY_MATCHIUID: iu[KEY_MATCHIUID],
                 } for iu in home_data['data']['homeDetail']['deviceList']['iuList']],
                 KEY_IEZCODE: home_data['data']['homeDetail']['deviceList'][KEY_IEZCODE],
             }
