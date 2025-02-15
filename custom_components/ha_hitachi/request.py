@@ -120,8 +120,10 @@ async def req_status(home_id,iezcode, xkq_list, iu_list):
         'homeId': int(home_id),
         "noNetTip": null,
         'iuIdList': [
-            "iezCode": iezcode,
-            "iuIds" : iu_list,
+            {
+                "iezCode": iezcode,
+                "iuIds" : iu_list,
+            }
         ],        
         'boxList': [],
         'xkqList': xkq_list,
